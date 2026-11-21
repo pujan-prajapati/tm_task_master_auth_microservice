@@ -13,6 +13,11 @@ COPY . .
 
 RUN pnpm build
 
+RUN useradd --system --create-home --shell /usr/sbin/nologin appuser \
+    && chown -R appuser:appuser /app
+
+USER appuser
+
 EXPOSE 5000
 
 CMD ["node", "dist/src/server.js"]

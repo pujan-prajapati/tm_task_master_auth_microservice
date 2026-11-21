@@ -24,6 +24,9 @@ services:
       - "5000:5000"
     env_file:
       - .env
+    read_only: true
+    tmpfs:
+      - /tmp
     depends_on:
       db:
         condition: service_healthy
